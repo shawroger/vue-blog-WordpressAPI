@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter, { Route } from "vue-router";
 import pageHome from "../views/Home.vue";
+import pageChat from "../views/Chat.vue";
+import pageTrans from "../views/Trans.vue";
 
 Vue.use(VueRouter);
 
@@ -11,6 +13,22 @@ const routes = [
 		component: pageHome,
 		meta: {
 			title: "AI Lab 2020"
+		}
+	},
+	{
+		path: "/chat",
+		name: "chat",
+		component: pageChat,
+		meta: {
+			title: "AI Lab 2020 · 智能聊天"
+		}
+	},
+	{
+		path: "/translate",
+		name: "trans",
+		component: pageTrans,
+		meta: {
+			title: "AI Lab 2020 · 智能翻译"
 		}
 	}
 ];

@@ -38,11 +38,12 @@ interface Translate extends AIReponse {
 		target_text: string;
 	};
 }
-export async function fetchTranslate(req: string) {
+export async function fetchTranslate(req: string, target: string = 'en') {
 	const base_url = "http://api.shawroger.com/ai/translate.php";
 	const res: AxiosResponse<Translate> = await axios.get(base_url, {
 		params: {
-			req
+			req,
+			target
 		}
 	});
 
