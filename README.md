@@ -1,4 +1,9 @@
-# ailabs-ts
+# vue2.0-preset
+
+## Run with
+
+vue2.6x, vue-composition-api, vue-router, vuex
+typescript, element-ui, filexon, axios, clipboard
 
 ## Project setup
 ```
@@ -14,16 +19,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
