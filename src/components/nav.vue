@@ -59,14 +59,7 @@ export default createComponent({
         name: "首页",
         router: "/"
       },
-      {
-        name: "聊天",
-        router: "/chat"
-      },
-      {
-        name: "翻译",
-        router: "/translate"
-      }
+  
     ];
     const { width } = useWindow();
     const index = ctx.root.$route.path;
