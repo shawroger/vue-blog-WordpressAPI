@@ -10,7 +10,7 @@ const routes = [
 		name: "home",
 		component: pageHome,
 		meta: {
-			title: "HomePage"
+			title: "Vue Preset"
 		}
 	},
 	
