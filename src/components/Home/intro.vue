@@ -1,37 +1,26 @@
 <template>
-  <div id="home-intro">
-    <app-logo></app-logo>
-    <!--
-    <p class="title">{{title}} · 2020 Service</p>
-    -->
-  </div>
+	<div id="home-intro">
+		<app-logo></app-logo>
+		<mu-divider></mu-divider>
+	</div>
 </template>
 
 <script lang="ts">
-import { title } from "@/utils/sources";
 import { createComponent } from "@vue/composition-api";
 import appLogo from "../logo.vue";
 export default createComponent({
-  name: "home-intro",
-  components: {
-    appLogo
-  },
-  setup() {
-    return {
-      title
-    };
-  }
+	name: "home-intro",
+	components: {
+		appLogo
+	}
 });
 </script>
 
 <style lang="less">
 #home-intro {
-  margin-top: 20px;
+	margin-top: 35px;
 }
-.title {
-  font-size: 20px;
-  font-family: Tahoma;
-  text-align: center;
-  color: #606266;
+.mu-divider {
+	margin: 35px 0px !important;
 }
 </style>

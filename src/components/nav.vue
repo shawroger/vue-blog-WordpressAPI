@@ -1,108 +1,102 @@
 <template>
-  <div id="app-nav">
-    <el-menu :default-active="index" class="el-menu-demo" mode="horizontal" :router="true">
-      <el-menu-item>
-        <a href="./" style="text-decoration: none;font-size: 20px">
-          {{
-          title
-          }}
-        </a>
-      </el-menu-item>
-
-      <template v-if="width > 750">
-        <el-menu-item
-          :index="item.router"
-          :route="item.router"
-          class="right-menu"
-          v-for="item in nav"
-          :key="item.name"
-        >{{item.name}}</el-menu-item>
-      </template>
-
-      <template v-else>
-        <i class="el-icon-menu icon right-menu" @click="iconClick"></i>
-      </template>
-    </el-menu>
-
-    <el-drawer :visible.sync="showMenu" direction="ltr" :title="title" size="100%">
-      <el-menu
-        :default-active="index"
-        class="el-menu-vertical-demo"
-        :router="true"
-        @select="menuClick"
-      >
-        <app-logo></app-logo>
-        <el-menu-item
-          :index="item.router"
-          :route="item.router"
-          v-for="item in nav"
-          :key="item.name"
-        >{{item.name}}</el-menu-item>
-      </el-menu>
-    </el-drawer>
-  </div>
+	<div id="app-nav">
+		<mu-appbar style="width: 100%;" :color="__MAIN_COLOR__" :z-depth="8">
+			<mu-button
+				icon
+				slot="left"
+				@click="
+					() => {
+						if ($route.path !== '/') {
+							$router.push('');
+						}
+					}
+				"
+			>
+				<img src="@/assets/nav-logo.png" />
+			</mu-button>
+			<router-link to="/" class="title">{{ __TITLE__ }}</router-link>
+			<mu-menu slot="right">
+				<mu-button flat>
+					<img src="@/assets/fingerprint-24px.svg" width="24" height="24" />
+				</mu-button>
+				<mu-list slot="content">
+					<mu-list-item
+						button
+						v-for="item in nav"
+						:key="item.to"
+						@click="
+							() => {
+								if ($route.path !== item.to) {
+									$router.push({ name: item.to });
+								}
+							}
+						"
+					>
+						<mu-list-item-content>
+							<mu-list-item-title>{{ item.title }}</mu-list-item-title>
+						</mu-list-item-content>
+					</mu-list-item>
+				</mu-list>
+			</mu-menu>
+		</mu-appbar>
+	</div>
 </template>
 
 <script lang="ts">
-import { title } from "../utils/sources";
-import { useWindow } from "../utils/useHooks";
 import { createComponent, onMounted, ref } from "@vue/composition-api";
-import appLogo from "./logo.vue";
+import { __TITLE__, __MAIN_COLOR__ } from "@/utils/config";
 export default createComponent({
-  name: "app-nav",
-  components: {
-    appLogo
-  },
-  setup(props, ctx) {
-    const nav = [
-      {
-        name: "首页",
-        router: "/"
-      },
-  
-    ];
-    const { width } = useWindow();
-    const index = ctx.root.$route.path;
-    const showMenu = ref(false);
-    function iconClick() {
-      showMenu.value = !showMenu.value;
-    }
-    function menuClick(key: string) {
-      if (key) {
-        iconClick();
-      }
-    }
-    return {
-      nav,
-      title,
-      width,
-      index,
-      menuClick,
-      showMenu,
-      iconClick
-    };
-  }
+	name: "app-nav",
+	components: {},
+	setup() {
+		const nav = [
+			{
+				title: "首页",
+				to: "/"
+			},
+			{
+				title: "搜索",
+				to: "search"
+			},
+			{
+				title: "设置",
+				to: "settings"
+			},
+			{
+				title: "关于",
+				to: "about"
+			}
+		];
+		return {
+			nav,
+			__TITLE__,
+			__MAIN_COLOR__
+		};
+	}
 });
 </script>
 
-<style scoped>
-.logo {
-  width: 55px;
-  padding-right: 5px;
-  margin-right: 5px;
-  position: relative;
-  top: -8px;
+<style lang="less" scoped>
+.mu-appbar {
+	padding-left: 20px;
+	padding-top: 2px;
+}
+img {
+	width: 40px;
+	height: 40px;
+}
+.title {
+	font-size: 22px;
+	color: white;
 }
 
-.right-menu {
-  float: right !important;
-}
-
-.icon {
-  font-size: 35px;
-  position: relative;
-  top: 15px;
-  color: LightGray;
-  right: 5px;
+@media screen and (max-width: 750px) {
+	.title {
+		display: none;
+	}
+	img {
+		width: 35px;
+		height: 35px;
+	}
 }
 </style>

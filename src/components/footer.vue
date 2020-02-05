@@ -1,17 +1,17 @@
 <template>
   <div id="app-footer">
-    <p>{{title}} · 2020 </p>
+    <p>{{__TITLE__}} · 2020 </p>
   </div>
 </template>
 
 <script lang="ts">
-import { title } from "@/utils/sources";
+import { __TITLE__ } from "@/utils/config";
 import { createComponent } from "@vue/composition-api";
 export default createComponent({
   name: "app-footer",
   setup() {
     return {
-      title
+      __TITLE__
     };
   }
 });

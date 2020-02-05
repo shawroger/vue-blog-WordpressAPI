@@ -1,6 +1,6 @@
 <template>
   <div id="app-logo">
-    <img v-no-drag class="logo" src="@/assets/logo.png" />
+    <img v-no-drag src="@/assets/logo.png" />
   </div>
 </template>
 
@@ -16,9 +16,10 @@ export default {
   justify-content: center;
   margin: 10px 0px;
 }
-.logo {
+img {
   width: 100px;
-  animation: logoRotate 4s;
+  height: 100px;
+  animation: logoRotate 2s;
 }
 
 @keyframes logoRotate {
@@ -26,7 +27,7 @@ export default {
     transform: rotate(0deg);
   }
   to {
-    transform: rotate(720deg);
+    transform: rotate(360deg);
   }
 }
 </style>

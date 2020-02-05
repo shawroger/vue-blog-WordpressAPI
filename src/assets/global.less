@@ -1,0 +1,50 @@
+@themeColor: #8faadc;
+@textColor: #3c4858;
+
+body{
+	width: 100% !important;
+}
+#post-show-render {
+	padding: 5px;
+	width: 100%;
+	p {
+		unicode-bidi: isolate;
+		font-variant-numeric: tabular-nums;
+		margin: 0 0 15px;
+		line-height: 1.618;
+		font-size: 18px;
+		display: block;
+		margin-block-start: 1em;
+		margin-block-end: 1em;
+		color: @textColor;
+		font-weight: 300;
+		font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+	}
+
+	hr,
+	.wpulike,
+	.wpulike-robeen,
+	ul[set="page"] {
+		display: none;
+	}
+	.wp-block-image {
+		padding: 10px 0 !important;
+		figure {
+			display: flex !important;
+			justify-content: center !important;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+
+	.wp-block-code {
+		padding: 15px;
+		margin: 10px 0px;
+		border: solid medium whitesmoke;
+		code {
+			padding: 5px;
+		}
+	}
+}

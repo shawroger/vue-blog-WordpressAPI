@@ -73,10 +73,7 @@ export function useStyles(styles: string | Ref<UseStyles>, newStyles?: string) {
 */
 
 export function useKeyup(keyCode: number | string, callback?: any) {
-	const keyupAction = (e: {
-		keyCode: number;
-		key: string;
-	}) => {
+	const keyupAction = (e: { keyCode: number; key: string }) => {
 		if (e.keyCode === keyCode || e.key === keyCode) {
 			if (callback) {
 				callback();
@@ -89,5 +86,38 @@ export function useKeyup(keyCode: number | string, callback?: any) {
 
 	onUnmounted(() => {
 		window.removeEventListener("keyup", keyupAction);
+	});
+}
+
+/*
+	useScript 
+*/
+
+export function useScript(params: {
+	src?: string;
+	text?: string;
+}): void {
+	function loadScriptBySrc(link: string) {
+		let script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = link;
+		document.getElementsByTagName("head")[0].appendChild(script);
+	}
+
+	function loadScriptByText(text: string) {
+		let script = document.createElement("script");
+		script.type = "text/javascript";
+		script.text = text;
+		document.getElementsByTagName("head")[0].appendChild(script);
+	}
+
+	onMounted(() => {
+		if(params.src) {
+			loadScriptBySrc(params.src);
+		}
+
+		if(params.text) {
+			loadScriptByText(params.text);
+		}
 	});
 }
