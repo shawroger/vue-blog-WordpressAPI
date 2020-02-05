@@ -86,8 +86,8 @@ export default createComponent({
 .mu-card {
 	width: 100% !important;
 	margin-bottom: 25px !important;
-	padding: 15px !important;
-	min-height: 232px !important;
+	padding: 10px !important;
+	height: 232px !important;
 }
 .mu-card-title {
 	word-break: keep-all;
@@ -131,7 +131,8 @@ export default createComponent({
 }
 @media screen and (max-width: 992px) {
 	.mu-card {
-		min-height: 212px;
+		height: 212px;
+		padding: 5px;
 	}
 }
 </style>
