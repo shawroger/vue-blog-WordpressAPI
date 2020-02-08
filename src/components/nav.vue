@@ -7,7 +7,7 @@
 				@click="
 					() => {
 						if ($route.path !== '/') {
-							$router.push('');
+							$router.push({name: '/'});
 						}
 					}
 				"
